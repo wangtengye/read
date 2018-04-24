@@ -61,3 +61,46 @@
 - InitializingBean `<init-method>`
 - DisposableBean `<destroy-method>`
   调用销毁方法
+
+#### Application Context
+- 相比`BeanFactory`，增加了对于`PostProcessor`的自动识别，`bean`的自动初始化，国际化的信息支持，容器内事件发布等
+- 实现类
+  - FileSystemXmlApplicationContext
+  - ClassPathXmlApplicationContext
+  - XmlWebApplicationContext
+- 资源加载
+  - Resource 
+    - ByteArrayResource
+    - ClassPathResource
+    - FileSystemResource
+    - URLResouce
+    - InputStreamResource
+  - ResourceLoader
+    - DefaultResourceLoader
+      - 若路径以`classpath:`开头 ，构造`ClassPathResource`
+      - 否则，通过URL定位资源（有协议前缀：`file:`,`http:`）
+      - 如无法定位，通过`getResourceByPath(String)`，默认返回`ClassPathResource`
+    - FileSystemResourceLoader
+      - 覆盖 `getResourceByPath(String)`，返回`FileSystemResource`
+  - ResourcePatternResolver 返回多个Resource
+    - `PathMatchingResourcePatternResolver`
+      - 确定资源路径后委托给内部的`ResourceLoader` 来查找和定位资源
+      - 不指定`ResourceLoader`，则默认`DefaultResourceLoader`
+  - AbstractApplicationContext作为ResourceLoader和ResourcePatternResolver ![](https://i.imgur.com/Usb78Di.png)
+- 国际化信息支持 
+  - Locale
+  - ResourceBundle
+  - MessageSource
+    - StaticMessageSource
+    - ResourceBundleMessageSource
+    - ReloadableResourceBundleMessageSource
+  - MessageSourceAware和MessageSource的注入 
+- 容器内部事件发布
+  - 自定义事件发布
+    - EventObject
+    - EventListener
+  - Spring 的容器内事件
+    - ApplicationEvent
+    - ApplicationListener `Application自动加载`
+    - ApplicationContext作为事件发布者
+- 多配置模块加载的简化
