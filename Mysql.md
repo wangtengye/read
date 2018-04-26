@@ -59,4 +59,38 @@
     ALTER TABLE innodb_table ENGINE=InnoDB;
     INSERT INTO innodb_table SELECT * FROM mysiam_table;
     ```
+#### MySQL基准测试
+- 简单来说，是一种压力测试，工具：`sysbench`
+- 策略
+  - 集成式测试
+  - 单组件式测试
+  - 指标
+    - 吞吐量（单位时间内的事务处理事）
+    - 响应时间或者延迟
+    - 并发性
+    - 可扩展性
+- 方法
+  - 常见的错误
+    - 使用真实数据的子集而不是全集
+    - 使用错误的数据分布
+    - 使用不真实的分布参数
+    - 多用户场景，只做单用户的测试
+    - 单服务器上测试分布式应用
+    - 与真实的用户行为不匹配s
+    - 反复执行同一个查询
+    - 没有检查错误
+    - 忽略系统预热
+    - 使用默认的服务器配置
+    - 测试时间短
+- 测试工具
+  - 集成式测试工具
+    - ab
+    - http_load
+    - JMeter
+  - 单组件是测试工具
+    - mysqlslap
+    - MySQL Benchmark Suite
+    - Super Smack
+    - Database Test Suite
+    - sysbench       
 		
