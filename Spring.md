@@ -104,3 +104,19 @@
     - ApplicationListener `Application自动加载`
     - ApplicationContext作为事件发布者
 - 多配置模块加载的简化
+
+#### IOC扩展
+- 注解 
+  - `@Autowired`(`byType)` 原理：反射机制，`AutowiredAnnotationBeanPostProcessor`
+    - 属性
+    - 构造方法
+    - 方法（不局限与setter）
+  - `@Resource`(`byName`)
+  - `<context:annotation-config>`
+  - `<context:component-scan>`
+  - `@Component`
+  - `@Repository`
+  - `@Service`
+  - `@Controller`
+
+ 
