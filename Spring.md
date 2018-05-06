@@ -119,4 +119,22 @@
   - `@Service`
   - `@Controller`
 
- 
+#### AOP
+- 静态
+  - `AspectJ` 
+  - 编译为字节码,类加载慢，运行快
+- 动态
+  - `JDK`代理
+    - 代理类必须实现接口
+  - `CGLIB`代理
+    - 代理类可以不用实现接口，通过子类方式增强,所以代理类不能是`final`类    
+  - 运行时动态代理，类加载快，运行慢  
+- 相关概念
+  - `Joinpoint`：`AOP`的织入点
+  - `Pointcut`：一组`Joinpoint`
+  - `Advice`：织入点需要执行的逻辑
+    - `BeforeAdvice`
+    - `AfterAdvice`
+    - `AroundAdvice`
+    - `Introduction`
+  - `Aspect`   
